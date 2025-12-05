@@ -132,4 +132,23 @@ if [ "$choice" = "5" ]; then
         echo "Word replaced!"
         echo "Replaced '$w1' with '$w2' in $in" >> logs.txt
     fi
+    if [ "$choice" = "11" ]; then
+        read -p "Enter first file: " f1
+        read -p "Enter second file: " f2
+        read -p "Enter output file: " out
+
+        cat "$f1" "$f2" > "$out"
+
+        echo "Files merged!"
+        echo "Merged $f1 and $f2" >> logs.txt
+    fi
+
+    if [ "$choice" = "12" ]; then
+        read -p "Enter file: " in
+        read -p "Enter N: " n
+
+        head -n "$n" "$in"
+
+        echo "Displayed first $n lines of $in" >> logs.txt
+    fi
     done
