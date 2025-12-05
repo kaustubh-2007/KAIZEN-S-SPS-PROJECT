@@ -68,3 +68,28 @@ if [ "$choice" = "3" ]; then
         echo "Stopwords cleaned in $in" >> logs.txt
     fi
 
+if [ "$choice" = "5" ]; then
+        read -p "Enter CSV file: " in
+        read -p "Column number: " col
+        read -p "Enter output file: " out
+
+        awk -F, -v c="$col" '{
+            gsub(/^[ \t]+|[ \t]+$/, "", $c)
+            $c = tolower($c)
+            print
+        }' OFS=, "$in" > "$out"
+
+        echo "CSV column cleaned!"
+        echo "CSV column $col cleaned in $in" >> logs.txt
+    fi
+
+    if [ "$choice" = "6" ]; then
+        read -p "Enter file: " in
+        echo "Total lines: $(wc -l < "$in")"
+        echo "Unique lines: $(sort "$in" | uniq | wc -l)"
+        echo "Total words: $(wc -w < "$in")"
+        echo "Total characters: $(wc -m < "$in")"
+        echo "Longest line length: $(wc -L < "$in")"
+
+        echo "Viewed statistics for $in" >> logs.txt
+    fi
