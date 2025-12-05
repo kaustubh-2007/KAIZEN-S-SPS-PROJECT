@@ -46,3 +46,25 @@ if [ "$choice" = "1" ]; then
         echo "Removed duplicates in $in" >> logs.txt
     fi
 done
+
+if [ "$choice" = "3" ]; then
+        read -p "Enter input file: " in
+        read -p "Enter output file: " out
+
+        sed 's/[^a-zA-Z0-9 ]//g' "$in" > "$out"
+
+        echo "Special characters removed!"
+        echo "Special chars cleaned in $in" >> logs.txt
+    fi
+
+
+    if [ "$choice" = "4" ]; then
+        read -p "Enter input file: " in
+        read -p "Enter output file: " out
+
+        grep -vwF -f stopwords.txt "$in" > "$out"
+
+        echo "Stopwords removed!"
+        echo "Stopwords cleaned in $in" >> logs.txt
+    fi
+
