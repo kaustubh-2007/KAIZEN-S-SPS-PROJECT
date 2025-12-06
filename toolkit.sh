@@ -151,4 +151,20 @@ if [ "$choice" = "5" ]; then
 
         echo "Displayed first $n lines of $in" >> logs.txt
     fi
+    if [ "$choice" = "13" ]; then
+        read -p "Enter file: " in
+        read -p "Enter N: " n
+
+        tail -n "$n" "$in"
+
+        echo "Displayed last $n lines of $in" >> logs.txt
+    fi
+
+
+    if [ "$choice" = "14" ]; then
+        echo "Exiting..."
+        exit
+    fi
+
+
     done
